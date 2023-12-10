@@ -61,15 +61,7 @@ def main(argv):
 
     xscale = 20
     yscale = 40
-
-    s1 = adjust_letter(letter_s, xscale, yscale,  20,    200)
-    y1 = adjust_letter(letter_y, xscale, yscale,  20*4,  200)
-    n1 = adjust_letter(letter_n, xscale, yscale,  20*7,  200)
-    o1 = adjust_letter(letter_o, xscale, yscale,  20*10, 200)
-    p1 = adjust_letter(letter_p, xscale, yscale,  20*13, 200)
-    s2 = adjust_letter(letter_s, xscale, yscale,  20*16, 200)
-    y2 = adjust_letter(letter_y, xscale, yscale,  20*19, 200)
-    s3 = adjust_letter(letter_s, xscale, yscale,  20*22, 200)
+    multx = 1.0
 
     while True:
         for event in pygame.event.get():
@@ -80,7 +72,16 @@ def main(argv):
         surface.fill((0, 0, 0))
     
         #pygame.draw.circle(surface, color, (320, 240), 75, width=1)
-    
+        s1 = adjust_letter(letter_s, xscale, yscale,  20,    200)
+        y1 = adjust_letter(letter_y, xscale, yscale,  20*4,  200)
+        n1 = adjust_letter(letter_n, xscale, yscale,  20*7,  200)
+        o1 = adjust_letter(letter_o, xscale, yscale,  20*10, 200)
+        p1 = adjust_letter(letter_p, xscale, yscale,  20*13, 200)
+        s2 = adjust_letter(letter_s, xscale, yscale,  20*16, 200)
+        y2 = adjust_letter(letter_y, xscale, yscale,  20*19, 200)
+        s3 = adjust_letter(letter_s, xscale, yscale,  20*22, 200)
+
+   
         pygame.draw.lines(surface, color, False, s1, width=1)                      
         pygame.draw.lines(surface, color, False, y1, width=1)
         pygame.draw.lines(surface, color, False, n1, width=1)
@@ -95,6 +96,11 @@ def main(argv):
         pygame.display.update()
         pygame.time.delay(100)
 
+        xscale += multx
+        if xscale > 46:
+            multx = -1*multx
+        elif xscale < 10:
+            multx = -1 * multx
 
     pygame.quit()
     exit(0)
