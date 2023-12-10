@@ -59,14 +59,17 @@ def main(argv):
 
     ]
 
-    s1 = adjust_letter(letter_s, 20,    200)
-    y1 = adjust_letter(letter_y, 20*4,  200)
-    n1 = adjust_letter(letter_n, 20*7,  200)
-    o1 = adjust_letter(letter_o, 20*10, 200)
-    p1 = adjust_letter(letter_p, 20*13, 200)
-    s2 = adjust_letter(letter_s, 20*16, 200)
-    y2 = adjust_letter(letter_y, 20*19, 200)
-    s3 = adjust_letter(letter_s, 20*22, 200)
+    xscale = 20
+    yscale = 40
+
+    s1 = adjust_letter(letter_s, xscale, yscale,  20,    200)
+    y1 = adjust_letter(letter_y, xscale, yscale,  20*4,  200)
+    n1 = adjust_letter(letter_n, xscale, yscale,  20*7,  200)
+    o1 = adjust_letter(letter_o, xscale, yscale,  20*10, 200)
+    p1 = adjust_letter(letter_p, xscale, yscale,  20*13, 200)
+    s2 = adjust_letter(letter_s, xscale, yscale,  20*16, 200)
+    y2 = adjust_letter(letter_y, xscale, yscale,  20*19, 200)
+    s3 = adjust_letter(letter_s, xscale, yscale,  20*22, 200)
 
     while True:
         for event in pygame.event.get():
@@ -96,10 +99,10 @@ def main(argv):
     pygame.quit()
     exit(0)
 
-def adjust_letter(letter, xoffset=0, yoffset=0):
+def adjust_letter(letter, xscale, yscale, xoffset=0, yoffset=0):
     rletter = letter.copy()
     for i in range(len(rletter)):
-        rletter[i] = (rletter[i][0] * 20 + xoffset, rletter[i][1] * 20 + yoffset)
+        rletter[i] = (rletter[i][0] * xscale + xoffset, rletter[i][1] * yscale + yoffset)
     return rletter
 
 if __name__ == "__main__":
