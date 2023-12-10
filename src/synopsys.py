@@ -4,10 +4,7 @@ import pygame
 
 cwd = os.path.dirname(os.path.abspath(__file__))
 append_path = cwd + "/../lib"
-
 sys.path.append(append_path)
-import jjl_3d as _3d
-
 
 def main(argv):
     # Initialize pygame
