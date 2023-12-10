@@ -15,6 +15,7 @@ def main(argv):
     pygame.display.set_caption("Synopsys")
     surface = pygame.display.set_mode((640, 480))
     color = (55, 255, 255)
+    line_color = (255, 255, 255)
     
     while True:
         for event in pygame.event.get():
@@ -35,11 +36,22 @@ def main(argv):
             poly1[1] = (poly1[1][0] + 1, poly1[1][1] + 1)
             poly1[2] = (poly1[2][0] + 1, poly1[2][1] + 1)
             poly1[3] = (poly1[3][0] + 1, poly1[3][1] + 1)
-
-
                       
         pygame.draw.polygon(surface, color, poly1)
         
+        try:
+            start1
+            start2
+        except NameError:
+            start1 = list((0, 10))
+            start2 = list((0, 240))
+        else:
+            start1[0] += 1
+            start1[1] += 1
+            start2[0] += 1
+            start2[1] += 1
+        pygame.draw.line(surface, line_color, start1, start2)
+
         pygame.display.flip()
         pygame.display.update()
         pygame.time.delay(100)
